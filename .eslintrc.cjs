@@ -15,7 +15,9 @@ const config = {
   "rules": {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/ no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {

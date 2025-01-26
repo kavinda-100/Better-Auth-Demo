@@ -31,3 +31,18 @@ export const auth = betterAuth({
    * by going to the http://localhost:3000/api/auth/reference/ you can access OpenApi endpoint.
    **/
 } satisfies BetterAuthOptions);
+
+/**
+ *@description using this type, You can get the session in the client side using props.
+ *
+ *@example
+ * "use client"
+ *
+ * export default Page(session: AuthSession){
+ *   return (
+ *      <div>{session}</div>
+ *   )
+ * }
+ *
+ **/
+export type AuthSession = typeof auth.$Infer.Session;

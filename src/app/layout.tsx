@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner"
 import React from "react";
+import Header from "../components/Header";
 
 export const metadata: Metadata = {
   title: "Better Auth",
@@ -17,8 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-      <main className={"container mx-auto bg-blue-500 min-h-screen"}>
-        {children}
+      <main className={"container mx-auto min-h-screen flex flex-col"}>
+        <Header />
+        <section className={"flex-1"}>{children}</section>
         <Toaster closeButton richColors />
       </main>
       </body>

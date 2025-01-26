@@ -7,17 +7,28 @@ type SubmitButtonProps = {
   type?: "submit" | "button";
   children: React.ReactNode;
   className?: string;
-  isLoading?: boolean;
-}
+  isLoading: boolean;
+};
 
-const SubmitButton = ({type, isLoading, className, children}: SubmitButtonProps) => {
+const SubmitButton = ({
+  type,
+  isLoading,
+  className,
+  children,
+}: SubmitButtonProps) => {
   return (
     <Button
       className={cn("w-full", className)}
       type={type ?? "submit"}
+      disabled={isLoading}
     >
-      { isLoading ?
-        <div className={"flex gap-3 justify-center items-center"}><Loader2 className={"size-4 animate-spin"}/> wait...</div> : children}
+      {isLoading ? (
+        <div className={"flex items-center justify-center gap-3"}>
+          <Loader2 className={"size-4 animate-spin"} /> wait...
+        </div>
+      ) : (
+        children
+      )}
     </Button>
   );
 };

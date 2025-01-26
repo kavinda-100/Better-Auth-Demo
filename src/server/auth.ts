@@ -15,13 +15,12 @@ export const auth = betterAuth({
   },
   // in this case, we email the user to verify the email.
   emailVerification: {
-    sendOnSignUp: true, // send email when signUp
+    sendOnSignUp: false, // send email when signUp this case send email manually.
     autoSignInAfterVerification: true, // user will auto signIn after they verify their email.
-    sendVerificationEmail: async ({ user, token }) => {
-      const verificationEmailUrl = `${process.env.BETTER_AUTH_URL}/api/auth/verify-email?token=${token}&callbackUrl=
-      ${process.env.EMAIL_VERIFICATION_CALLBACK_URL}`;
+    sendVerificationEmail: async ({ user, url }) => {
+      console.log("email url", url);
       await sendVerificationEmail({
-        url: verificationEmailUrl,
+        url: url,
         name: user.name,
         receiverEmail: user.email,
       });

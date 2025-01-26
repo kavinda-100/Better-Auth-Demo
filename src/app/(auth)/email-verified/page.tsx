@@ -12,9 +12,9 @@ const Page = () => {
         <ShieldCheck className={"size-4"} />
         Email Verified successfully.
       </div>
-      <Link href={"/"}>
-        <Button>Go To Home</Button>
-      </Link>
+      <Button asChild>
+        <Link href={"/"}>Go Home</Link>
+      </Button>
     </section>
   );
 };

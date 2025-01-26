@@ -47,7 +47,7 @@ bun run dev
 ## Additional Packages
 ### Dependencies
 ```bash
-bun add @prisma/client zod
+bun add better-auth
 ```
 ### Dev Dependencies
 ```bash

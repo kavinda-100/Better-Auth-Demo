@@ -40,16 +40,9 @@ Finally, run the development server:
 bun run dev
 ```
 
-## Installed Packages
-- @prisma/client
-- zod
 
 ## Additional Packages
 ### Dependencies
 ```bash
-bun add better-auth
-```
-### Dev Dependencies
-```bash
-bun add -D prisam
+bun add better-auth nodemailer @react-email/components
 ```

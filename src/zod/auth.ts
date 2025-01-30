@@ -33,3 +33,7 @@ export const SignInSchema = z.object({
   email: emailSchema(),
   password: passwordSchema("Password"),
 });
+
+export const forgotPasswordSchema = z.object({
+  email: emailSchema(),
+});

@@ -85,7 +85,7 @@ const SignUp = () => {
     );
   }
   return (
-    <Card className={"w-[400px]"}>
+    <Card className={"w-full px-3 lg:w-[400px] lg:px-0"}>
       <CardHeader>
         <CardTitle className={"text-2xl"}>Sign Up 🔑</CardTitle>
         <CardDescription>Better Auth Sign Up Form</CardDescription>

@@ -16,6 +16,8 @@ const envSchema = z.object({
     .string({ message: "email is required" })
     .email({ message: "email is invalid" }),
   MY_EMAIL_PASSWORD: z.string().min(4, "Must be at least 8 characters"),
+  GITHUB_CLIENT_ID: z.string(),
+  GITHUB_CLIENT_SECRET: z.string(),
 });
 
 const env = envSchema.safeParse(process.env);

@@ -25,8 +25,12 @@ const Header = async () => {
           </div>
         ) : (
           <div className={"flex items-center justify-center gap-2"}>
-            <Button variant={"secondary"}>Sign In</Button>
-            <Button>Sign Up</Button>
+            <Button variant={"secondary"} asChild>
+              <Link href={"/sign-in"}>Sign In</Link>
+            </Button>
+            <Button asChild>
+              <Link href={"/sign-up"}>Sign Up</Link>
+            </Button>
           </div>
         )}
       </div>

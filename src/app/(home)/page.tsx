@@ -9,6 +9,7 @@ import { getSession } from "../../server/session";
 
 export default async function HomePage() {
   const session = await getSession();
+
   return (
     <section
       className={

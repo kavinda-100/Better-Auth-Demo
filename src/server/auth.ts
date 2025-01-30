@@ -8,6 +8,12 @@ export const auth = betterAuth({
   database: prismaAdapter(db, {
     provider: "postgresql",
   }),
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    },
+  },
   // this will enable email and password login and there need to verify their email.
   emailAndPassword: {
     enabled: true,

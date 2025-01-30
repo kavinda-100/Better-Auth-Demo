@@ -20,7 +20,7 @@ git clone https://github.com/kavinda-100/Better-Auth-Demo.git
 Then, install the dependencies:
 
 ```bash
-cd better-auth
+cd better-auth 
 bun install
 ```
 
@@ -44,5 +44,5 @@ bun run dev
 ## Additional Packages
 ### Dependencies
 ```bash
-bun add better-auth nodemailer @react-email/components
+bun add better-auth @better-fetch/fetch nodemailer @react-email/components
 ```

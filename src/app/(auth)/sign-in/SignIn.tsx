@@ -29,6 +29,8 @@ import FormError from "../../../components/FormError";
 import FormSuccess from "../../../components/FormSuccess";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import GitHubButton from "../../../components/GitHubButton";
+import { Github } from "lucide-react";
 
 const SignIn = () => {
   const [error, setError] = useState<string | null>(null);
@@ -87,6 +89,10 @@ const SignIn = () => {
         <CardDescription>Better Auth Sign In Form</CardDescription>
       </CardHeader>
       <CardContent>
+        <div className={"w-full space-y-4"}>
+          <GitHubButton text={"Sign In with GitHub"} icon={<Github />} />
+          <p className={"text-center text-xs text-muted-foreground"}>or</p>
+        </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField

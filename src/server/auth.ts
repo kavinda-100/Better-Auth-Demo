@@ -8,6 +8,15 @@ export const auth = betterAuth({
   database: prismaAdapter(db, {
     provider: "postgresql",
   }),
+  session: {
+    //* session configuration (cookie) - this is required. at the beginning of auth configuration.
+    expiresIn: 60 * 60 * 24 * 7, // 7 days
+    updateAge: 60 * 60 * 24, // 1 day (every 1 day the session expiration is updated)
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // Cache duration in seconds (5 minutes)
+    },
+  },
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID,
@@ -20,6 +29,7 @@ export const auth = betterAuth({
     requireEmailVerification: true,
     // This will send and email to reset the password.
     sendResetPassword: async ({ user, url }) => {
+      // send email to reset password.
       await sendPasswordResetEmail({
         url,
         name: user.name,
@@ -33,6 +43,7 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true, // user will auto signIn after they verify their email.
     sendVerificationEmail: async ({ user, url }) => {
       console.log("email url", url);
+      // send email to verify email.
       await sendVerificationEmail({
         url: url,
         name: user.name,

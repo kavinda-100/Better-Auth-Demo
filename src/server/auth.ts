@@ -2,7 +2,9 @@ import { betterAuth, type BetterAuthOptions } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { db } from "./db";
 import { sendPasswordResetEmail, sendVerificationEmail } from "../emails";
+// plugins
 import { openAPI } from "better-auth/plugins";
+import { admin } from "better-auth/plugins";
 
 export const auth = betterAuth({
   database: prismaAdapter(db, {
@@ -21,6 +23,15 @@ export const auth = betterAuth({
     github: {
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    },
+  },
+  //extend the user model.a
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        required: false,
+      },
     },
   },
   // this will enable email and password login and there need to verify their email.
@@ -51,7 +62,7 @@ export const auth = betterAuth({
       });
     }, // method to send the email.
   },
-  plugins: [openAPI()], // all the plugins are goose here.
+  plugins: [openAPI(), admin()], // all the plugins are goose here.
   /**
    * by going to the http://localhost:3000/api/auth/reference/ you can access OpenApi endpoint.
    **/

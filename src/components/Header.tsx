@@ -18,9 +18,9 @@ const Header = async () => {
       <div>
         {session?.user ? (
           <div className={"flex items-center justify-center gap-2"}>
-            <p className={"font-bold text-muted-foreground"}>
-              {session?.user?.name}
-            </p>
+            <Button variant={"secondary"} asChild>
+              <Link href={"/dashboard"}>Dashboard</Link>
+            </Button>
             <SignOutButton />
           </div>
         ) : (

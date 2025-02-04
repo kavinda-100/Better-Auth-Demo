@@ -27,7 +27,6 @@ import SubmitButton from "@/components/SubmitButton";
 import { authClient } from "../../../server/auth-client";
 import FormError from "../../../components/FormError";
 import FormSuccess from "../../../components/FormSuccess";
-import { toast } from "sonner";
 import Link from "next/link";
 import GitHubButton from "../../../components/GitHubButton";
 import { Github } from "lucide-react";
@@ -67,7 +66,6 @@ const SignUp = () => {
         },
         onSuccess: async () => {
           setError(null);
-          toast.success("You have successfully signed up.");
           // send the email
           await sendVerificationEmail(values.email);
           setSuccess(
@@ -130,7 +128,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="*******" {...field} />
+                    <Input type="password" placeholder="*******" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -143,7 +141,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="******" {...field} />
+                    <Input type="password" placeholder="******" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

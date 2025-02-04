@@ -1,7 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -15,12 +21,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
 import { authClient } from "../../../server/auth-client";
-import { toast } from "sonner";
 import SubmitButton from "../../../components/SubmitButton";
 import { forgotPasswordSchema } from "../../../zod/auth";
+import FormError from "../../../components/FormError";
+import FormSuccess from "../../../components/FormSuccess";
 
 export default function ForgotPasswordPage() {
   const [isPending, setIsPending] = useState(false);
+  const [error, setError] = React.useState<string | undefined>("");
+  const [success, setSuccess] = React.useState<string | undefined>("");
 
   const form = useForm<z.infer<typeof forgotPasswordSchema>>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -37,9 +46,9 @@ export default function ForgotPasswordPage() {
     });
 
     if (error) {
-      toast.error(error.message);
+      setError(error?.message);
     } else {
-      toast.success("Check your email for reset password link");
+      setSuccess("Check your email for reset password link");
     }
     setIsPending(false);
   };
@@ -49,6 +58,9 @@ export default function ForgotPasswordPage() {
       <Card className={"w-full px-3 lg:w-[400px] lg:px-0"}>
         <CardHeader>
           <CardTitle className="text-2xl">Forgot Password</CardTitle>
+          <CardDescription>
+            Enter your email to receive a password reset link
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -71,8 +83,10 @@ export default function ForgotPasswordPage() {
                   </FormItem>
                 )}
               />
+              <FormError message={error} />
+              <FormSuccess message={success} />
               <SubmitButton isLoading={isPending} type={"submit"}>
-                Reset Password
+                Submit
               </SubmitButton>
             </form>
           </Form>

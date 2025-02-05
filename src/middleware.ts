@@ -9,6 +9,7 @@ const publicRoutes = [
   "/forgot-password",
 ];
 const authRoutes = ["/sign-in", "/sign-up"];
+const adminRoutes = ["/dashboard/admin"];
 const publicApiRoutesPrefix = "/api/auth";
 const REDIRECT_URL = "/dashboard";
 
@@ -16,6 +17,7 @@ export default async function authMiddleware(request: NextRequest) {
   const pathName = request.nextUrl.pathname;
   const isPublicRoute = publicRoutes.includes(pathName);
   const isAuthRoute = authRoutes.includes(pathName);
+  const isAdminRoute = adminRoutes.includes(pathName);
   const isPublicApiRoute = pathName.startsWith(publicApiRoutesPrefix);
 
   const { data: session } = await betterFetch<AuthSession>(
@@ -47,9 +49,14 @@ export default async function authMiddleware(request: NextRequest) {
       // redirect to dashboard
       return NextResponse.redirect(new URL(REDIRECT_URL, request.url));
     }
-
-    //TODO: for the admin route, you can check the user role here
-
+    // if it is an admin route,
+    if (isAdminRoute) {
+      // but the user is not an admin
+      if (session.user.role !== "admin") {
+        // redirect to home
+        return NextResponse.redirect(new URL("/", request.url));
+      }
+    }
     // else do nothing
     return NextResponse.next();
   }

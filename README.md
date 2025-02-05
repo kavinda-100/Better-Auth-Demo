@@ -46,3 +46,19 @@ bun run dev
 ```bash
 bun add better-auth @better-fetch/fetch nodemailer @react-email/components
 ```
+### preview
+
+- SignUp Page
+![Sign-up](./images/sign-up.png)
+- SignIn Page
+![Sign-in](./images/sign-in.png)
+- Forgot Password Page
+![Forgot Password](./images/frogot.png)
+- Reset Password Page
+![Reset Password](./images/reset.png)
+- Home Page
+![Home](./images/home.png)
+- Dashboard Page
+![Dashboard](./images/dashboard.png)
+- Admin Dashboard Page
+![Admin Dashboard](./images/admin.png)

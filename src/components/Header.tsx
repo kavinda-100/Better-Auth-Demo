@@ -9,7 +9,7 @@ const Header = async () => {
   return (
     <header
       className={
-        "container mx-auto flex h-[60px] items-center justify-between border-b p-2"
+        "container mx-auto flex h-[60px] items-center justify-between border-b p-2 bg-blend-screen"
       }
     >
       <div className={"text-2xl font-bold text-gray-800"}>
